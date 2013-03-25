@@ -67,7 +67,7 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     # WARNING: enabling this can cause multi-second delays due to NFS latency
-    #alias ls='ls --color=auto'
+    alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -81,8 +81,11 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias ls='ls --color=auto'
+# ruby versions
+alias ruby='ruby1.9.3'
+alias irb='irb1.9.3'
 
+#alias ls='ls --color=auto'
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -99,12 +102,16 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PATH=/home/samhop/dart/dart-sdk/bin:$PATH
-PATH=/home/samhop/depot_tools:$PATH
 PATH=/home/samhop/.git:$PATH
+PATH=/home/samhop/scripts/git-cl:/home/samhop/.cabal/bin:$PATH
 export PATH
 
 set -o vi
 
 # PS1="\[\e[1; 32m\]\u@\h:\W $ \[\e[0m\]"
 PS1='\[\e[0;32m\]\u@\h:\[\e[m\] \[\e[0;32m\]\W\[\e[m\] \[\e[0;32m\]\$ \[\e[m\]\[\e[0;38m\]'
+
+# include jump-jump function
+source ~/scripts/jj.sh
+
+
